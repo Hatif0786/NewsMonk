@@ -4,10 +4,13 @@ import NewsMonk from './newsMonk.png';
 export default class NewsItem extends Component {
   
   render() {
-    let { title, description, imageUrl, newsUrl, publishedBy, author } = this.props;
+    let { title, description, imageUrl, newsUrl} = this.props;
     return (
-      <div>
+      <div className="my-3">
         <div className="card">
+            <div style={{display: 'flex', justifyContent:'flex-end', position:'absolute', right:'0' }}>
+               <span className="badge rounded-pill bg-warning">{this.props.source.name}</span>
+            </div>
           <div className="card__img">
             <img src={!imageUrl ? NewsMonk : this.props.imageUrl} alt={title} />
           </div>
@@ -22,6 +25,7 @@ export default class NewsItem extends Component {
                 <p>By: {this.props.authorName} on {new Date(this.props.publishedBy).toGMTString()}</p>
             </div>
             </div>
+          
           </div>
         </div>
       </div>
